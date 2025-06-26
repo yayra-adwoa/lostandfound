@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    background: url(lnfpics/picture\ 1.jpg);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    background-color: #ffffffcc;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .role-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .role-btns button {
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+  }
+
+  .user-btn {
+    background-color: #082256;
+    color: white;
+  }
+
+  .user-btn:hover {
+    background-color: #2d8ad0;
+  }
+
+  .staff-btn {
+    background-color: #2196F3;
+    color: white;
+  }
+
+  .staff-btn:hover {
+    background-color: #10548b;
+  }
+
+  .admin-btn {
+    background-color: #eddb12;
+    color: white;
+  }
+
+  .admin-btn:hover {
+    background-color: rgb(232, 198, 9);
+  }
+
+  .button {
+      user-select: none;
+      cursor: pointer;
+  }
+
+  @media (max-width: 500px) {
+    .role-btns button {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }

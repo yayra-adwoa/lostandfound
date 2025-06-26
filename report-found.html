@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Found Item</title>
+  <link rel="stylesheet" href="report-found.css">
+</head>
+<body>
+  <div class="container">
+    <div class="panel form-panel">
+      <h2>✅ Report a Found Item</h2>
+
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="description">Describe the item you found *</label>
+          <textarea id="description" name="description" placeholder="e.g. I found a black purse with red lining..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Where did you find it? *</label>
+          <input type="text" id="location" name="location" placeholder="e.g. Near the cafeteria, beside Block B..." required />
+        </div>
+
+        <div class="form-group">
+          <label for="your-name">Your Name *</label>
+          <input type="text" id="your-name" name="your-name" placeholder="e.g. Yayra Aggor" required />
+        </div>
+
+        <div class="form-group">
+          <label for="your-contact">Your Contact Info (Phone/Email) *</label>
+          <input type="text" id="your-contact" name="your-contact" placeholder="e.g. yayra@mail.com or 0551234567" required />
+        </div>
+
+        <button type="submit" class="submit-btn">📨 Notify Staff</button>
+      </form>
+
+      <div class="note">
+        After submitting, a staff member will follow up to collect the item and upload the full details.
+        <br /><br />
+        Or you can email the staff directly at:
+        <a class="email-link" href="mailto:lostandfound@gctu.edu.gh">lostandfound@gctu.edu.gh</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert("Thank you! A staff member will reach out to you soon.");
+      // Optional: send to backend or email service here in future
+      document.querySelector("form").reset();
+    }
+  </script>
+</body>
+</html>
