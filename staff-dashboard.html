@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Staff Dashboard - Lost & Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="staff-dashboard.css">
+</head>
+<body>
+  <div class="dashboard">
+    <h1>📋 Staff Dashboard - Lost & Found</h1>
+
+    <!-- Section 1: View Incoming Reports -->
+    <div class="section">
+      <h2>📥 Incoming Reports</h2>
+
+      <!-- Example Lost Report -->
+      <div class="report-card">
+        <p><label>Type:</label> Lost</p>
+        <p><label>Item:</label> iPhone 12</p>
+        <p><label>Description:</label> Black with cracked screen</p>
+        <p><label>Location:</label> Lecture Hall 3</p>
+        <p><label>Submitted by:</label> Yayra Aggor (yayra@example.com)</p>
+
+        <div class="actions">
+          <label for="imageUpload1">📸 Upload Image:</label>
+          <input type="file" id="imageUpload1" accept="image/*"><br>
+
+          <button class="btn-post">✅ Post to Public Page</button>
+          <button class="btn-archive">🗃 Archive (Reunited)</button>
+        </div>
+      </div>
+
+      <!-- Example Found Report -->
+      <div class="report-card">
+        <p><label>Type:</label> Found</p>
+        <p><label>Item:</label> Student ID Card - "Afi Mensah"</p>
+        <p><label>Location:</label> Near Cafeteria</p>
+        <p><label>Reported by:</label> Kofi Ansah (055-123-4567)</p>
+
+        <div class="actions">
+          <label for="imageUpload2">📸 Upload Image:</label>
+          <input type="file" id="imageUpload2" accept="image/*"><br>
+
+          <button class="btn-post">✅ Post to Public Page</button>
+          <button class="btn-archive">🗃 Archive (Reunited)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: View Posted Items -->
+    <div class="section">
+      <h2>👀 Quick Links</h2>
+      <button class="btn-view" onclick="location.href='view-lost.html'">🔍 View Lost Items</button>
+      <button class="btn-view" onclick="location.href='view-found.html'">👀 View Found Items</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -102,11 +102,11 @@
   }
 
   .quick-link.found {
-    background: linear-gradient(135deg, #48bb78, #38a169);
+    background: #2a0044;
   }
 
   .quick-link.lost {
-    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    background: #2a0044;
   }
 
   .stats {
