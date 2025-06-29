@@ -1,92 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>View Found Items</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="found-style.css" />
-</head>
-<body>
-  <h1>📦 View Found Items</h1>
-  <div class="category-container">
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #f0f4ff, #ffffff);
+  margin: 0;
+  padding: 20px;
+}
 
-    <!-- Electronics -->
-    <div class="category">
-      <h2>📱 Electronics</h2>
-      <div class="items">
-        <div class="item-card">
-          <img src="images/infinix.jpg" alt="Infinix Hot 10" />
-          <h4>Infinix Hot 10</h4>
-          <p>Found at the Library entrance</p>
-          <button class="claim-btn" onclick="claimItem('Infinix Hot 10')">Claim</button>
-        </div>
-        <div class="item-card">
-          <img src="images/earbuds.jpg" alt="Bluetooth Earbuds" />
-          <h4>Bluetooth Earbuds</h4>
-          <p>Found in Lecture Hall 3</p>
-          <button class="claim-btn" onclick="claimItem('Bluetooth Earbuds')">Claim</button>
-        </div>
-      </div>
-    </div>
+h1 {
+  text-align: center;
+  color: #333;
+}
 
-    <!-- ID Cards & Keys -->
-    <div class="category">
-      <h2>🪪 ID Cards & Keys</h2>
-      <div class="items">
-        <div class="item-card">
-          <img src="images/idcard.jpg" alt="Staff ID" />
-          <h4>Staff ID - Akosua Boateng</h4>
-          <p>Found near the Cafeteria</p>
-          <button class="claim-btn" onclick="claimItem('Staff ID - Akosua Boateng')">Claim</button>
-        </div>
-        <div class="item-card">
-          <img src="images/key.jpg" alt="Room Key" />
-          <h4>Room Key (Block A)</h4>
-          <p>Found at hostel reception</p>
-          <button class="claim-btn" onclick="claimItem('Room Key (Block A)')">Claim</button>
-        </div>
-      </div>
-    </div>
+.category-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
 
-    <!-- Clothing -->
-    <div class="category">
-      <h2>🧥 Clothing (Jackets, Scarves)</h2>
-      <div class="items">
-        <div class="item-card">
-          <img src="images/scarf.jpg" alt="Red Scarf" />
-          <h4>Red Scarf</h4>
-          <p>Found on Auditorium chair</p>
-          <button class="claim-btn" onclick="claimItem('Red Scarf')">Claim</button>
-        </div>
-      </div>
-    </div>
+.category {
+  margin-bottom: 40px;
+}
 
-    <!-- Academic Items -->
-    <div class="category">
-      <h2>📚 Academic Items</h2>
-      <div class="items">
-        <div class="item-card">
-          <img src="images/calculus-book.jpg" alt="Calculus Book" />
-          <h4>Calculus Textbook</h4>
-          <p>Found in Science Block</p>
-          <button class="claim-btn" onclick="claimItem('Calculus Textbook')">Claim</button>
-        </div>
-        <div class="item-card">
-          <img src="images/notebook.jpg" alt="Notebook" />
-          <h4>Notebook - Data Structures</h4>
-          <p>Found in IT Lab</p>
-          <button class="claim-btn" onclick="claimItem('Notebook - Data Structures')">Claim</button>
-        </div>
-      </div>
-    </div>
+.category h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 8px;
+}
 
-  </div>
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 15px;
+}
 
-  <script>
-    function claimItem(itemName) {
-      alert(`Your claim for "${itemName}" has been submitted to the admin for approval.`);
-    }
-  </script>
-</body>
-</html>
+.item-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.item-card:hover {
+  transform: scale(1.02);
+}
+
+.item-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.item-card h4 {
+  margin: 10px 0 5px;
+}
+
+.claim-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.claim-btn:hover {
+  background-color: #2563eb;
+}
