@@ -57,17 +57,3 @@ h1 {
 .item-card h4 {
   margin: 10px 0 5px;
 }
-
-.claim-btn {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.claim-btn:hover {
-  background-color: #2563eb;
-}

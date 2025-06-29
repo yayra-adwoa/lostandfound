@@ -11,16 +11,18 @@
   <h1>📦 View Found Items</h1>
   <div class="category-container">
 
-    <!-- Electronics Category -->
+    <!-- Electronics -->
     <div class="category">
       <h2>📱 Electronics</h2>
       <div class="items">
         <div class="item-card">
-          <h4>Infinix Hot 10</h4>
+          <img src="images/phone.jpg" alt="Iphone 13" />
+          <h4>Iphone 13</h4>
           <p>Found at the Library entrance</p>
-          <button class="claim-btn" onclick="claimItem('Infinix Hot 10')">Claim</button>
+          <button class="claim-btn" onclick="claimItem('Iphone 13')">Claim</button>
         </div>
         <div class="item-card">
+          <img src="images/earbuds.jpg" alt="Bluetooth Earbuds" />
           <h4>Bluetooth Earbuds</h4>
           <p>Found in Lecture Hall 3</p>
           <button class="claim-btn" onclick="claimItem('Bluetooth Earbuds')">Claim</button>
@@ -33,14 +35,16 @@
       <h2>🪪 ID Cards & Keys</h2>
       <div class="items">
         <div class="item-card">
+          <img src="images/idcard.jpg" alt="Staff ID" />
           <h4>Staff ID - Akosua Boateng</h4>
           <p>Found near the Cafeteria</p>
           <button class="claim-btn" onclick="claimItem('Staff ID - Akosua Boateng')">Claim</button>
         </div>
         <div class="item-card">
-          <h4>Room Key (Block A)</h4>
-          <p>Found at hostel reception</p>
-          <button class="claim-btn" onclick="claimItem('Room Key (Block A)')">Claim</button>
+         <img src="images/key.jpg" alt="Car Key" />
+          <h4>Car Key </h4>
+          <p>Found at C1A</p>
+          <button class="claim-btn" onclick="claimItem('Car Key')">Claim</button>
         </div>
       </div>
     </div>
@@ -50,6 +54,7 @@
       <h2>🧥 Clothing (Jackets, Scarves)</h2>
       <div class="items">
         <div class="item-card">
+          <img src="images/scarf.jpg" alt="Red Scarf" />
           <h4>Red Scarf</h4>
           <p>Found on Auditorium chair</p>
           <button class="claim-btn" onclick="claimItem('Red Scarf')">Claim</button>
@@ -62,11 +67,13 @@
       <h2>📚 Academic Items</h2>
       <div class="items">
         <div class="item-card">
+          <img src="images/calculus-book.jpg" alt="Calculus Book" />
           <h4>Calculus Textbook</h4>
           <p>Found in Science Block</p>
           <button class="claim-btn" onclick="claimItem('Calculus Textbook')">Claim</button>
         </div>
         <div class="item-card">
+          <img src="images/notebook.jpg" alt="Notebook" />
           <h4>Notebook - Data Structures</h4>
           <p>Found in IT Lab</p>
           <button class="claim-btn" onclick="claimItem('Notebook - Data Structures')">Claim</button>
@@ -79,7 +86,6 @@
   <script>
     function claimItem(itemName) {
       alert(`Your claim for "${itemName}" has been submitted to the admin for approval.`);
-      // Integrate backend logic here (e.g., Firebase)
     }
   </script>
 </body>
