@@ -84,9 +84,31 @@
   </div>
 
   <script>
-    function claimItem(itemName) {
-      alert(`Your claim for "${itemName}" has been submitted to the admin for approval.`);
-    }
+  function claimItem(itemName) {
+    const claimId = generateClaimId();
+    const message = `
+    ✅ Claim Submitted!
+    
+    • Item: ${itemName}
+    • Claim ID: ${claimId}
+    
+    Your claim has been sent to the admin for review. You will be notified once it's approved.
+    `;
+    alert(message);
+
+    // Simulated: Send claim to admin backend or database
+    console.log({
+      claimId,
+      item: itemName,
+      date: new Date().toISOString()
+    });
+  }
+
+  function generateClaimId() {
+    const timestamp = Date.now().toString().slice(-5); // Last 5 digits of timestamp
+    const random = Math.floor(Math.random() * 900 + 100); // Random 3-digit
+    return `CLM-${timestamp}-${random}`;
+  }
   </script>
 </body>
 </html>
