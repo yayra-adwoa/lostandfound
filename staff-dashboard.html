@@ -14,7 +14,6 @@
     <div class="section">
       <h2>📥 Incoming Reports</h2>
 
-      <!-- Example Lost Report -->
       <div class="report-card">
         <p><label>Type:</label> Lost</p>
         <p><label>Item:</label> iPhone 12</p>
@@ -25,35 +24,107 @@
         <div class="actions">
           <label for="imageUpload1">📸 Upload Image:</label>
           <input type="file" id="imageUpload1" accept="image/*"><br>
-
-          <button class="btn-post">✅ Post to Public Page</button>
-          <button class="btn-archive">🗃 Archive (Reunited)</button>
-        </div>
-      </div>
-
-      <!-- Example Found Report -->
-      <div class="report-card">
-        <p><label>Type:</label> Found</p>
-        <p><label>Item:</label> Student ID Card - "Afi Mensah"</p>
-        <p><label>Location:</label> Near Cafeteria</p>
-        <p><label>Reported by:</label> Kofi Ansah (055-123-4567)</p>
-
-        <div class="actions">
-          <label for="imageUpload2">📸 Upload Image:</label>
-          <input type="file" id="imageUpload2" accept="image/*"><br>
-
+          <!-- These buttons are just visual since this report isn't in the inventory list -->
           <button class="btn-post">✅ Post to Public Page</button>
           <button class="btn-archive">🗃 Archive (Reunited)</button>
         </div>
       </div>
     </div>
 
-    <!-- Section 2: View Posted Items -->
+    <!-- Section 2: Inventory Management -->
+    <div class="section">
+      <h2>📦 Inventory Management</h2>
+      <input type="text" placeholder="Search item name..." oninput="filterInventory(this.value)">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Item</th>
+            <th>Status</th>
+            <th>Posted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryBody">
+          <!-- JS will load content here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 3: Quick Links -->
     <div class="section">
       <h2>👀 Quick Links</h2>
       <button class="btn-view" onclick="location.href='view-lost.html'">🔍 View Lost Items</button>
       <button class="btn-view" onclick="location.href='view-found.html'">👀 View Found Items</button>
     </div>
   </div>
+
+  <script>
+    const inventory = [
+      { id: "1", type: "lost", name: "Red Bag", status: "pending" },
+      { id: "2", type: "found", name: "USB Drive", status: "posted" },
+      { id: "3", type: "lost", name: "Student ID - Sarah", status: "archived" }
+    ];
+
+    function loadInventory() {
+      const tbody = document.getElementById("inventoryBody");
+      tbody.innerHTML = "";
+      inventory.forEach(item => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${item.type}</td>
+            <td>${item.name}</td>
+            <td>${item.status}</td>
+            <td>${item.status === "posted" ? "✅" : "❌"}</td>
+            <td>
+              <button class="btn-post" onclick="postReport('${item.id}')">✅ Post</button>
+              <button class="btn-archive" onclick="archiveItem('${item.id}')">🗃 Archive</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    function postReport(id) {
+      const item = inventory.find(i => i.id === id);
+      if (item) {
+        item.status = "posted";
+        alert("${item.name}" has been posted.);
+        loadInventory();
+      }
+    }
+
+    function archiveItem(id) {
+      const item = inventory.find(i => i.id === id);
+      if (item) {
+        item.status = "archived";
+        alert("${item.name}" has been archived.);
+        loadInventory();
+      }
+    }
+
+    function filterInventory(query) {
+      const tbody = document.getElementById("inventoryBody");
+      tbody.innerHTML = "";
+      const filtered = inventory.filter(i =>
+        i.name.toLowerCase().includes(query.toLowerCase())
+      );
+      filtered.forEach(item => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${item.type}</td>
+            <td>${item.name}</td>
+            <td>${item.status}</td>
+            <td>${item.status === "posted" ? "✅" : "❌"}</td>
+            <td>
+              <button class="btn-post" onclick="postReport('${item.id}')">✅ Post</button>
+              <button class="btn-archive" onclick="archiveItem('${item.id}')">🗃 Archive</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+    loadInventory();
+  </script>
 </body>
-</html>
+</html> 
