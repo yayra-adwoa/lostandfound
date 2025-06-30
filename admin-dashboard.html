@@ -156,13 +156,19 @@
     });
 
     // Handle claim approvals
-    document.querySelectorAll('.approve-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.textContent = "Approved";
-        btn.disabled = true;
-        btn.style.backgroundColor = "green";
-      });
-    });
+document.querySelectorAll('.approve-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.textContent = "Approved";
+    btn.disabled = true;
+    btn.style.backgroundColor = "green";
+
+    const row = btn.closest('tr');
+    const item = row.children[1].textContent;
+    const user = row.children[2].textContent;
+
+    alert(`Hi ${user}, your claim for "${item}" has been approved. Please pick it up from the staff.`);
+  });
+});
 
     // Handle returns
     document.querySelectorAll('.return-btn').forEach(btn => {
