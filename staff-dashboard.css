@@ -88,3 +88,19 @@ body {
   .btn-view:hover {
     background-color: #1a4194;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e0;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #2720e9;
+  }
