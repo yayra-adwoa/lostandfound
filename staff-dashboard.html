@@ -7,6 +7,20 @@
   <link rel="stylesheet" href="staff-dashboard.css">
 </head>
 <body>
+  <button class="profile-button" onclick="toggleProfile()">
+    <img src="lnfpics/profile pic.jpg" alt="Profile Picture">
+  </button>
+
+  <div class="profile-section" id="profileSection">
+    <h2>👤 Your Profile</h2>
+    <label>Change Name:</label>
+    <input type="text" placeholder="Enter new name">
+    <label>Change Profile Picture:</label>
+    <input type="file" accept="image/*">
+    <button class="logout-btn" onclick="logoutUser()">🚪 Log Out</button>
+    <button class="close-profile" onclick="toggleProfile()">⬅ Back to Dashboard</button>
+  </div>
+
   <div class="dashboard">
     <h1>📋 Staff Dashboard - Lost & Found</h1>
 
@@ -24,7 +38,6 @@
         <div class="actions">
           <label for="imageUpload1">📸 Upload Image:</label>
           <input type="file" id="imageUpload1" accept="image/*"><br>
-          <!-- These buttons are just visual since this report isn't in the inventory list -->
           <button class="btn-post">✅ Post to Public Page</button>
           <button class="btn-archive">🗃 Archive (Reunited)</button>
         </div>
@@ -45,9 +58,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="inventoryBody">
-          <!-- JS will load content here -->
-        </tbody>
+        <tbody id="inventoryBody"></tbody>
       </table>
     </div>
 
@@ -89,7 +100,7 @@
       const item = inventory.find(i => i.id === id);
       if (item) {
         item.status = "posted";
-        alert("${item.name}" has been posted.);
+        alert(`${item.name} has been posted.`);
         loadInventory();
       }
     }
@@ -98,7 +109,7 @@
       const item = inventory.find(i => i.id === id);
       if (item) {
         item.status = "archived";
-        alert("${item.name}" has been archived.);
+        alert(`${item.name} has been archived.`);
         loadInventory();
       }
     }
@@ -124,7 +135,12 @@
         `;
       });
     }
+
+    function toggleProfile() {
+      document.getElementById("profileSection").classList.toggle("active");
+    }
+
     loadInventory();
   </script>
 </body>
-</html> 
+</html>

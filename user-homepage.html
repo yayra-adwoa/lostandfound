@@ -8,34 +8,101 @@
 </head>
 <body>
   <div class="container">
-    <!-- User Dashboard Panel -->
-    <div class="panel homepage">
-      <h1>🔍 Lost & Found Portal</h1>
-      <p class="subtitle">Welcome back! Reconnect with your lost items or report what you've found.</p>
+    
+    <!-- Top Bar with Profile Icon -->
+    <div class="top-bar">
+      <button id="profileBtn" class="profile-icon">
+        <img src="lnfpics/profile pic.jpg" alt="Profile Picture" />
+      </button>
+    </div>
 
-      <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search for lost or found items..." />
-        <span class="search-icon">🔍</span>
-      </div>
+    <!-- Profile Section (Initially Hidden) -->
+    <div class="profile-section" id="profileSection" style="display: none;">
+      <h2>👤 Profile & Settings</h2>
+      <p><strong>Name:</strong> Yayra Aggor</p>
 
-      <div class="quick-links">
-        <a href="report-lost.html" class="quick-link lost">📢 Report Lost Item</a>
-        <a href="report-found.html" class="quick-link found">✅ Report Found Item</a>
-        <a href="view-found.html" class="quick-link found">👀 View Found Items</a>
-        <a href="view-lost.html" class="quick-link lost">🔍 View Lost Items</a>
-      </div>
+      <!-- Change Profile Picture -->
+      <form class="profile-form" action="upload-picture.php" method="POST" enctype="multipart/form-data">
+        <label for="profilePic">Change Profile Picture:</label>
+        <input type="file" id="profilePic" name="profilePic" accept="image/*" />
+        <button type="submit">Upload Picture</button>
+      </form>
 
-      <div class="stats">
-        <div class="stat-card">
-          <div class="stat-number">30</div>
-          <div class="stat-label">Items Found</div>
+      <!-- Change Name -->
+      <form class="profile-form" action="change-name.php" method="POST">
+        <label for="newName">Change Name:</label>
+        <input type="text" id="newName" name="newName" required />
+        <button type="submit">Update Name</button>
+      </form>
+
+      <!-- Change Password -->
+      <form class="profile-form" action="change-password.php" method="POST">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required />
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required />
+        <button type="submit">Change Password</button>
+      </form>
+
+      <!-- Logout -->
+      <a href="logout.html" class="logout-button">🚪 Log Out</a>
+
+      <!-- Back to Dashboard -->
+      <button id="backBtn" class="back-button">← Back to Dashboard</button>
+    </div>
+
+    <!-- Main Dashboard Section -->
+    <div id="dashboardSection">
+      <div class="panel homepage">
+        <h1>🔍 Lost & Found Portal</h1>
+        <p class="subtitle">Welcome back! Reconnect with your lost items or report what you've found.</p>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <input type="text" class="search-bar" placeholder="Search for lost or found items..." />
+          <span class="search-icon">🔍</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">20</div>
-          <div class="stat-label">Reunited</div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+          <a href="report-lost.html" class="quick-link lost">📢 Report Lost Item</a>
+          <a href="report-found.html" class="quick-link found">✅ Report Found Item</a>
+          <a href="view-found.html" class="quick-link found">👀 View Found Items</a>
+          <a href="view-lost.html" class="quick-link lost">🔍 View Lost Items</a>
+          <a href="my-claims.html" class="quick-link claims">📄 My Claims</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number">30</div>
+            <div class="stat-label">Items Found</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">20</div>
+            <div class="stat-label">Reunited</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- JavaScript to toggle profile view -->
+  <script>
+    const profileBtn = document.getElementById("profileBtn");
+    const profileSection = document.getElementById("profileSection");
+    const dashboardSection = document.getElementById("dashboardSection");
+    const backBtn = document.getElementById("backBtn");
+
+    profileBtn.addEventListener("click", () => {
+      dashboardSection.style.display = "none";
+      profileSection.style.display = "block";
+    });
+
+    backBtn.addEventListener("click", () => {
+      dashboardSection.style.display = "block";
+      profileSection.style.display = "none";
+    });
+  </script>
 </body>
 </html>

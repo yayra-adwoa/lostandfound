@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Claims</title>
+  <link rel="stylesheet" href="my-claims.css" />
+</head>
+<body>
+  <div class="claims-container">
+    <h1>📄 My Claims</h1>
+    <p class="subtitle">These are the items you’ve claimed from the Lost & Found portal.</p>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-status="all">All</button>
+      <button class="filter-btn" data-status="pending">Pending</button>
+      <button class="filter-btn" data-status="approved">Approved</button>
+      <button class="filter-btn" data-status="denied">Denied</button>
+    </div>
+
+    <!-- Claim List -->
+    <div class="claims-list" id="claimsList"></div>
+  </div>
+
+  <script>
+    const claimList = document.getElementById("claimsList");
+    const claimData = JSON.parse(localStorage.getItem("userClaims")) || [];
+
+    function renderClaims(filter = "all") {
+      claimList.innerHTML = "";
+
+      const filtered = claimData.filter(claim => {
+        return filter === "all" || claim.status === filter;
+      });
+
+      if (filtered.length === 0) {
+        claimList.innerHTML = `<p class="no-claims">No claims found for this category.</p>`;
+        return;
+      }
+
+      filtered.forEach(claim => {
+        const card = document.createElement("div");
+        card.className = "claim-card";
+        card.dataset.status = claim.status;
+
+        card.innerHTML = `
+          <div class="claim-details">
+            <h2>${claim.name}</h2>
+            <p><strong>Claim ID:</strong> ${claim.id || "N/A"}</p>
+            <p><strong>Claimed on:</strong> ${claim.date}</p>
+            <p><strong>Description:</strong> ${claim.description}</p>
+          </div>
+          <div class="claim-status ${claim.status}">
+            ${claim.status === "pending" ? "⏳ Pending" : 
+              claim.status === "approved" ? "✅ Approved" : 
+              "❌ Denied"}
+          </div>
+        `;
+
+        claimList.appendChild(card);
+      });
+    }
+
+    renderClaims();
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active")?.classList.remove("active");
+        btn.classList.add("active");
+        renderClaims(btn.dataset.status);
+      });
+    });
+  </script>
+</body>
+</html>

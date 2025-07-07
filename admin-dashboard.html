@@ -7,6 +7,21 @@
   <link rel="stylesheet" href="admin-dashboard.css" />
 </head>
 <body>
+  <button class="profile-button" onclick="toggleProfile()">
+    <img src="lnfpics/profile pic.jpg" alt="Profile Picture">
+  </button>
+
+  <div class="profile-section" id="profileSection">
+    <h2>👤 Admin Profile</h2>
+    <label>Change Name:</label>
+    <input type="text" id="adminName" placeholder="Enter new name">
+    <label>Change Profile Picture:</label>
+    <input type="file" accept="image/*">
+    <button onclick="saveAdminProfile()">Save Changes</button>
+    <button onclick="logout()">Logout</button>
+    <button onclick="toggleProfile()">Back to Dashboard</button>
+  </div>
+
   <nav>
     <h2>Admin Panel</h2>
     <button class="nav-btn active" data-target="users">Manage Users</button>
@@ -19,7 +34,6 @@
   </nav>
 
   <main>
-    <!-- Manage Users -->
     <section id="users" class="active">
       <h3>User Management</h3>
       <table>
@@ -39,7 +53,6 @@
       </form>
     </section>
 
-    <!-- Manage Listings -->
     <section id="listings">
       <h3>Item Listings</h3>
       <table>
@@ -59,7 +72,6 @@
       </form>
     </section>
 
-    <!-- Approve Claims -->
     <section id="claims">
       <h3>Approve User Claims</h3>
       <table>
@@ -81,7 +93,6 @@
       </table>
     </section>
 
-    <!-- Process Returns -->
     <section id="returns">
       <h3>Process Item Returns</h3>
       <table>
@@ -95,7 +106,6 @@
       </table>
     </section>
 
-    <!-- Archive Items -->
     <section id="archive">
       <h3>Archive Old Items</h3>
       <table>
@@ -110,7 +120,6 @@
       </table>
     </section>
 
-    <!-- Generate Reports -->
     <section id="reports">
       <h3>Generate Reports</h3>
       <p>Click to generate recent activity reports:</p>
@@ -118,23 +127,19 @@
       <button onclick="alert('Excel report downloaded!')">Export to Excel</button>
     </section>
 
-    <!-- Settings -->
     <section id="settings">
       <h3>System Settings</h3>
       <form>
         <label>Site Title</label>
         <input type="text" value="Lost & Found Portal" />
-        
         <label>Admin Contact Email</label>
         <input type="email" value="admin@lostfound.com" />
-
         <label>Notification Preferences</label>
         <select>
           <option value="all">All</option>
           <option value="email">Email Only</option>
           <option value="none">None</option>
         </select>
-
         <button class="submit-btn">Save Settings</button>
       </form>
     </section>
@@ -155,22 +160,36 @@
       });
     });
 
-    // Handle claim approvals
-document.querySelectorAll('.approve-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.textContent = "Approved";
-    btn.disabled = true;
-    btn.style.backgroundColor = "green";
+    function toggleProfile() {
+      document.getElementById("profileSection").classList.toggle("active");
+    }
 
-    const row = btn.closest('tr');
-    const item = row.children[1].textContent;
-    const user = row.children[2].textContent;
+    function saveAdminProfile() {
+      const newName = document.getElementById("adminName").value;
+      if (newName) {
+        alert(`Name updated to ${newName}`);
+      }
+    }
 
-    alert(`Hi ${user}, your claim for "${item}" has been approved. Please pick it up from the staff.`);
-  });
-});
+    function logout() {
+      alert("Logged out successfully!");
+      location.href = "login.html";
+    }
 
-    // Handle returns
+    document.querySelectorAll('.approve-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.textContent = "Approved";
+        btn.disabled = true;
+        btn.style.backgroundColor = "green";
+
+        const row = btn.closest('tr');
+        const item = row.children[1].textContent;
+        const user = row.children[2].textContent;
+
+        alert(`Hi ${user}, your claim for "${item}" has been approved. Please pick it up from the staff.`);
+      });
+    });
+
     document.querySelectorAll('.return-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.textContent = "Returned";
@@ -179,7 +198,6 @@ document.querySelectorAll('.approve-btn').forEach(btn => {
       });
     });
 
-    // Handle archiving
     document.querySelectorAll('.archive-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.textContent = "Archived";
