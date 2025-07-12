@@ -60,6 +60,18 @@
     min-height: 100px;
   }
 
+  .photo-upload {
+    border: 2px dashed #cbd5e0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .photo-upload:hover {
+    background: rgba(237, 137, 54, 0.05);
+    border-color: #ed8936;
+  }
   .submit-btn {
     width: 100%;
     padding: 15px;
