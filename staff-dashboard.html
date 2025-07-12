@@ -13,11 +13,16 @@
 
   <div class="profile-section" id="profileSection">
     <h2>👤 Your Profile</h2>
-    <label>Change Name:</label>
-    <input type="text" placeholder="Enter new name">
-    <label>Change Profile Picture:</label>
-    <input type="file" accept="image/*">
-    <button class="logout-btn" onclick="logoutUser()">🚪 Log Out</button>
+     <!-- Change Password -->
+      <form class="profile-form">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required />
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required />
+        <button type="submit">Change Password</button>
+      </form>
+    <!-- Logout -->
+      <a href="stafflogin.html" class="logout-button">🚪 Log Out</a>
     <button class="close-profile" onclick="toggleProfile()">⬅ Back to Dashboard</button>
   </div>
 
@@ -142,5 +147,7 @@
 
     loadInventory();
   </script>
+  <script src="staffprofile.js"></script>
+  <script src="staffactions.js"></script>
 </body>
 </html>

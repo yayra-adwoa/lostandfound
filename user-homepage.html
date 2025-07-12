@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    
+
     <!-- Top Bar with Profile Icon -->
     <div class="top-bar">
       <button id="profileBtn" class="profile-icon">
@@ -19,24 +19,17 @@
     <!-- Profile Section (Initially Hidden) -->
     <div class="profile-section" id="profileSection" style="display: none;">
       <h2>👤 Profile & Settings</h2>
-      <p><strong>Name:</strong> Yayra Aggor</p>
-
-      <!-- Change Profile Picture -->
-      <form class="profile-form" action="upload-picture.php" method="POST" enctype="multipart/form-data">
-        <label for="profilePic">Change Profile Picture:</label>
-        <input type="file" id="profilePic" name="profilePic" accept="image/*" />
-        <button type="submit">Upload Picture</button>
-      </form>
+      <p><strong>Name:</strong> <span id="userName"></span></p>
 
       <!-- Change Name -->
-      <form class="profile-form" action="change-name.php" method="POST">
+      <form class="profile-form">
         <label for="newName">Change Name:</label>
         <input type="text" id="newName" name="newName" required />
         <button type="submit">Update Name</button>
       </form>
 
       <!-- Change Password -->
-      <form class="profile-form" action="change-password.php" method="POST">
+      <form class="profile-form">
         <label for="currentPassword">Current Password:</label>
         <input type="password" id="currentPassword" name="currentPassword" required />
         <label for="newPassword">New Password:</label>
@@ -104,5 +97,6 @@
       profileSection.style.display = "none";
     });
   </script>
+  <script src="userprofile.js"></script>
 </body>
 </html>
