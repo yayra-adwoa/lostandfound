@@ -4,7 +4,7 @@ body {
     color: #2d3748;
     padding: 20px;
   }
-  
+
   .dashboard {
     max-width: 1200px;
     margin: auto;
@@ -13,45 +13,53 @@ body {
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
-  
+
   h1 {
     text-align: center;
     color: #4c51bf;
     margin-bottom: 30px;
   }
-  
+
   .section {
     margin-bottom: 40px;
   }
-  
+
   .section h2 {
     color: #2b6cb0;
     margin-bottom: 15px;
   }
-  
-  .report-card {
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .report-card p {
-    margin: 5px 0;
-  }
-  
-  .report-card label {
-    font-weight: bold;
-  }
-  
-  .actions {
-    margin-top: 15px;
-  }
-  
-  input[type="file"] {
+
+  .report-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.report-card {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-card p {
+  margin-bottom: 10px;
+}
+
+.report-card label {
+  font-weight: bold;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+
+input[type="file"] {
     margin-top: 10px;
   }
-  
+
   button {
     padding: 10px 20px;
     margin: 10px 5px 0 0;
@@ -61,30 +69,30 @@ body {
     font-weight: bold;
     transition: 0.2s ease;
   }
-  
+
   .btn-post {
     background-color: #2a0044;
     color: white;
   }
-  
+
   .btn-post:hover {
     background-color: #1a4194;
   }
-  
+
   .btn-archive {
     background-color: #2a0044;
     color: white;
   }
-  
+
   .btn-archive:hover {
     background-color: #1a4194;
   }
-  
+
   .btn-view {
     background-color: #2a0044;
     color: white;
   }
-  
+
   .btn-view:hover {
     background-color: #1a4194;
   }
@@ -105,5 +113,68 @@ body {
     background-color: #afaec7;
   }
 
-  
+  .profile-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .profile-button img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #2a0044;
+    }
+
+    .profile-section {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .profile-section.active {
+      display: flex;
+    }
+
+    .profile-section h2 {
+      margin-top: 0;
+    }
+
+    .profile-section input[type="file"],
+    .profile-section input[type="text"] {
+      margin-top: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .close-profile,
+    .logout-btn {
+      background: #2a0044;
+      color: white;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .logout-btn {
+      background: #a00000;
+    }
+
+    .logout-button:hover {
+      background: #c53030;
+    }
   

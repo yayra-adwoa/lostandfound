@@ -3,156 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>View Found Items</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="view-found.css" />
+  <title>View Found Item</title>
   <style>
-    .claim-form-modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      display: none;
+    body {
+      font-family: Arial, sans-serif;
     }
-
-    .claim-form-content {
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    .item-details {
+      max-width: 800px;
+      margin: 40px auto;
     }
-
-    .claim-form-content h2 {
-      margin-bottom: 15px;
-      color: #2a0044;
-    }
-
-    .claim-form-content textarea {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+    .item-card {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       margin-bottom: 20px;
-      resize: vertical;
     }
-
-    .claim-form-content button {
-      background: #2a0044;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .claim-form-content .close-btn {
-      background: transparent;
-      border: none;
-      float: right;
-      font-size: 18px;
-      color: #666;
-      cursor: pointer;
-    }
+    .item-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+ }
   </style>
 </head>
 <body>
-  <h1>📦 View Found Items</h1>
-  <div class="category-container">
-
-    <!-- Sample Category: Electronics -->
-    <div class="category">
-      <h2>📱 Electronics</h2>
-      <div class="items">
-        <div class="item-card">
-          <img src="images/phone.jpg" alt="Iphone 13" />
-          <h4>Iphone 13</h4>
-          <p>Found at the Library entrance</p>
-          <button class="claim-btn" onclick="handleClaim(this)">Claim</button>
-        </div>
-        <div class="item-card">
-          <img src="images/earbuds.jpg" alt="Bluetooth Earbuds" />
-          <h4>Bluetooth Earbuds</h4>
-          <p>Found in Lecture Hall 3</p>
-          <button class="claim-btn" onclick="handleClaim(this)">Claim</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Add more categories and items as needed... -->
-  </div>
-
-  <!-- Claim Modal -->
-  <div class="claim-form-modal" id="claimModal">
-    <div class="claim-form-content">
-      <button class="close-btn" onclick="closeModal()">✖</button>
-      <h2>Describe Your Item</h2>
-      <p>Please provide details to prove it's yours (e.g. color, serial number, etc.):</p>
-      <textarea id="userDescription" placeholder="Type your item details here..."></textarea>
-      <button onclick="submitClaim()">Submit Claim</button>
-    </div>
-  </div>
-
-  <script>
-    let currentItemName = "";
-    let currentItemLocation = "";
-
-    function handleClaim(button) {
-      const card = button.closest(".item-card");
-      currentItemName = card.querySelector("h4")?.innerText || "Unnamed Item";
-      currentItemLocation = card.querySelector("p")?.innerText || "No description";
-
-      document.getElementById("userDescription").value = ""; // Clear textarea
-      document.getElementById("claimModal").style.display = "flex"; // Show modal
-    }
-
-    function closeModal() {
-      document.getElementById("claimModal").style.display = "none";
-    }
-
-    function submitClaim() {
-      const descriptionInput = document.getElementById("userDescription").value.trim();
-      if (!descriptionInput) {
-        alert("Please provide a description.");
-        return;
-      }
-
-      const claimId = generateClaimId();
-      const currentDate = new Date().toISOString().split("T")[0];
-
-      alert(`
-✅ Claim Submitted!
-
-• Item: ${currentItemName}
-• Claim ID: ${claimId}
-
-Your claim has been sent to the admin for review. You will be notified once it's approved.
-      `);
-
-      const userClaims = JSON.parse(localStorage.getItem("userClaims")) || [];
-      userClaims.push({
-        id: claimId,
-        name: currentItemName,
-        description: descriptionInput,
-        date: currentDate,
-        status: "pending"
-      });
-
-      localStorage.setItem("userClaims", JSON.stringify(userClaims));
-      closeModal();
-    }
-
-    function generateClaimId() {
-      const timestamp = Date.now().toString().slice(-5);
-      const random = Math.floor(Math.random() * 900 + 100);
-      return `CLM-${timestamp}-${random}`;
-    }
-  </script>
+  <h1>View Found Item</h1>
+  <div id="item-container" class="item-details"></div>
+  <script src="viewitems.js"></script>
 </body>
 </html>
