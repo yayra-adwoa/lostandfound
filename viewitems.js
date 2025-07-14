@@ -1,64 +1,36 @@
-const token = localStorage.getItem("token");
+const token = localStorage.getItem('token');
 
-function getStatusText(status, location) {
-  switch (status) {
-    case "lost":
-      return `Lost at ${location}`;
-    case "found":
-      return `Found at ${location}`;
-    case "posted":
-      return `Posted at ${location}`;
-    default:
-      return "";
-  }
-}
+if (token) {
+  fetch('http://127.0.0.1:8000/api/item/items/', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Token ${token}`,
+    },
+  })
+  .then(response => response.json())
+  .then(data => {
+    const postedItems = data.filter(item => item.status === 'posted');
+    const itemContainer = document.getElementById('item-container');
 
-// Fetch items from backend API with token authentication
-fetch("http://127.0.0.1:8000/api/item/items", {
-  headers: {
-    Authorization: `Token ${token}`,
-  },
-})
-.then((response) => {
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return response.json();
-})
-.then((data) => {
-  const lostItemsContainer = document.querySelector("#lost-items .items");
-  const foundItemsContainer = document.querySelector("#found-items .items");
-
-  if (!lostItemsContainer || !foundItemsContainer) {
-    console.error("Error: Could not find lost or found items container");
-    return;
-  }
-
-  lostItemsContainer.innerHTML = "";
-  foundItemsContainer.innerHTML = "";
-
-  if (!Array.isArray(data)) {
-    console.error("Error: Expected an array of items, but got:", data);
-    return;
-  }
-
-  data.forEach((item) => {
-    const itemHTML = `
-      <div class="item-card">
-        <img src="http://127.0.0.1:8000${item.image}" alt="${item.title}" />
-        <h4>${item.title}</h4>
-        <p>${getStatusText(item.status, item.location)}</p>
-      </div>
+    // Test image
+    const testImageHTML = `
+      <img src="https://picsum.photos/200/300" alt="Test Image" />
     `;
+    itemContainer.innerHTML += testImageHTML;
 
-    if (item.status === "lost") {
-      lostItemsContainer.insertAdjacentHTML("beforeend", itemHTML);
-    } else if (item.status === "found" || item.status === "posted") {
-      foundItemsContainer.insertAdjacentHTML("beforeend", itemHTML);
-    }
-  });
-})
-.catch((error) => {
-  console.error("Error fetching items:", error);
-  // You could also display an error message to the user here
-});
+    postedItems.forEach(item => {
+      console.log(item.image); // Verify the image URL
+      const itemHTML = `
+        <div class="item-card">
+          <img src="http://127.0.0.1:8000/static/media/${item.image}" alt="${item.title}" />
+          <h4>${item.title}</h4>
+          <p>${item.description}</p>
+        </div>
+      `;
+      itemContainer.innerHTML += itemHTML;
+    });
+  })
+  .catch(error => console.error(error));
+} else {
+  console.log('No token found');
+}

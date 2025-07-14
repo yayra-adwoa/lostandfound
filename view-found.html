@@ -3,121 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>View Lost and Found Items</title>
+  <title>View Found Item</title>
   <style>
     body {
       font-family: Arial, sans-serif;
     }
-    .category-container {
+    .item-details {
       max-width: 800px;
       margin: 40px auto;
     }
-    .category {
-      margin-bottom: 40px;
-    }
-    .items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
     .item-card {
-      width: calc(33.33% - 20px);
       border: 1px solid #ddd;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
     }
     .item-card img {
       width: 100%;
       height: 150px;
       object-fit: cover;
       border-radius: 10px 10px 0 0;
-    }
-    .claim-form-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      display: none;
-    }
-    .claim-form-content {
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-    .close-btn {
-      background: transparent;
-      border: none;
-      float: right;
-      font-size: 18px;
-      color: #666;
-      cursor: pointer;
-    }
-    h1 {
-      text-align: center;
-    }
+ }
   </style>
 </head>
 <body>
-  <h1>📦 View Lost and Found Items</h1>
-  <div class="category-container">
-    <h2>Lost Items</h2>
-    <div class="category">
-      <h3>📱 Electronics</h3>
-      <div class="items">
-        <div class="item-card">
-          <img src="images/lost-phone.jpg" alt="Lost Phone" />
-          <h4>Lost Phone</h4>
-          <p>Lost at the Library entrance</p>
-          <button class="claim-btn">Claim</button>
-        </div>
-        <div class="item-card">
-          <img src="images/lost-laptop.jpg" alt="Lost Laptop" />
-          <h4>Lost Laptop</h4>
-          <p>Lost in Lecture Hall 3</p>
-          <button class="claim-btn">Claim</button>
-        </div>
-      </div>
-    </div>
-    <h2>Found Items</h2>
-    <div class="category">
-      <h3>📱 Electronics</h3>
-      <div class="items">
-        <div class="item-card">
-          <img src="images/found-earbuds.jpg" alt="Found Earbuds" />
-          <h4>Found Earbuds</h4>
-          <p>Found at the Cafeteria</p>
-        </div>
-        <div class="item-card">
-          <img src="images/found-phone.jpg" alt="Found Phone" />
-          <h4>Found Phone</h4>
-          <p>Found in the Library</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="claim-form-modal" id="claimModal">
-    <div class="claim-form-content">
-      <button class="close-btn">✖</button>
-      <h2>Claim Item</h2>
-      <form id="claim-form">
-        <label for="item-name">Item Name:</label>
-        <input type="text" id="item-name" required>
-        <label for="item-description">Item Description:</label>
-        <textarea id="item-description" required></textarea>
-        <button type="submit">Submit Claim</button>
-      </form>
-    </div>
-  </div>
+  <h1>View Found Item</h1>
+  <div id="item-container" class="item-details"></div>
   <script src="viewitems.js"></script>
 </body>
 </html>
