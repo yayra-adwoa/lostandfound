@@ -40,7 +40,7 @@
     color: #2d3748;
   }
 
-  input, textarea {
+  input, select, textarea {
     width: 100%;
     padding: 12px;
     border: 2px solid #e2e8f0;
@@ -108,4 +108,18 @@
     .container {
       padding: 25px;
     }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
   }
