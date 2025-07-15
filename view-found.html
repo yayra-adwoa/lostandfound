@@ -3,33 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>View Found Item</title>
+  <title>View Found Items</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="view-found.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    .claim-form-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
     }
-    .item-details {
-      max-width: 800px;
-      margin: 40px auto;
+
+    .claim-form-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
-    .item-card {
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
+
+    .claim-form-content h2 {
+      margin-bottom: 15px;
+      color: #2a0044;
     }
-    .item-card img {
+
+    .claim-form-content textarea {
       width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 10px 10px 0 0;
- }
+      height: 100px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      resize: vertical;
+    }
+
+    .claim-form-content button {
+      background: #2a0044;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .claim-form-content .close-btn {
+      background: transparent;
+      border: none;
+      float: right;
+      font-size: 18px;
+      color: #666;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <h1>View Found Item</h1>
-  <div id="item-container" class="item-details"></div>
-  <script src="viewitems.js"></script>
+  <h1>📦 View Found Items</h1>
+  <div class="category-container">
+
+    <!-- Sample Category: Electronics -->
+    <div class="category">
+      <h2>📱 Electronics</h2>
+      <div class="items">
+        <div class="item-card">
+          <img src="images/phone.jpg" alt="Iphone 13" />
+          <h4>Iphone 13</h4>
+          <p>Found at the Library entrance</p>
+          <button class="claim-btn" onclick="handleClaim(this)">Claim</button>
+        </div>
+        <div class="item-card">
+          <img src="images/earbuds.jpg" alt="Bluetooth Earbuds" />
+          <h4>Bluetooth Earbuds</h4>
+          <p>Found in Lecture Hall 3</p>
+          <button class="claim-btn" onclick="handleClaim(this)">Claim</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more categories and items as needed... -->
+  </div>
+
+ <!-- Claim Modal -->
+<div class="claim-modal" id="claimModal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">✖</button>
+    <h2>Claim Form</h2>
+    <div class="form-group">
+      <label for="itemName">Item Name:</label>
+      <input type="text" id="itemName" placeholder="Enter item name...">
+    </div>
+    <div class="form-group">
+      <label for="userDescription">Item Description:</label>
+      <textarea id="userDescription" placeholder="Enter item description..."></textarea>
+    </div>
+    <button onclick="submitClaim()" class="submit-btn">Submit Claim</button>
+  </div>
+</div>
+  <script src="claimitem.js"></script>
 </body>
 </html>
