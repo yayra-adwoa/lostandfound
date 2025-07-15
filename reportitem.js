@@ -21,5 +21,5 @@ function handleSubmit(event) {
   .catch(error => {
     console.error(error);
     alert('❌ Error submitting form. Please try again!');
-  });
+  });
 }
